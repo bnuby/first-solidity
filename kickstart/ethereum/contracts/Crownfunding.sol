@@ -78,6 +78,15 @@ contract Crownfunding {
 
         payable(request.recipient).transfer(request.value);
         request.complete = true;
+    }
 
+    function getSummary() public view returns (uint, uint, uint, uint, address) {
+        return (
+            minimunContribute,
+            address(this).balance,
+            numRequest,
+            approversCount,
+            manager
+        );
     }
 }
